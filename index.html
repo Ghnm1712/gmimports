@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO essencial -->
+    <title>GM Import | Perfumes Importados Originais em Brasília - Entrega Grátis no DF</title>
+    <meta name="description" content="Perfumes importados originais masculinos e femininos com entrega grátis no DF. Pix com 5% de desconto. Compre agora e receba pelo WhatsApp.">
+    <meta name="keywords" content="perfumes importados, perfumes originais brasília, perfumaria masculina, perfumaria feminina, GM Import">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.gmimport.com.br/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="GM Import | Perfumes Importados Originais">
+    <meta property="og:description" content="Perfumes importados originais com entrega grátis no DF. Pix com 5% OFF.">
+    <meta property="og:image" content="https://www.gmimport.com.br/og-image.jpg">
+    <meta property="og:url" content="https://www.gmimport.com.br/">
+    <meta property="og:locale" content="pt_BR">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="GM Import | Perfumes Importados Originais">
+    <meta name="twitter:description" content="Perfumes importados originais com entrega grátis no DF. Pix com 5% OFF.">
+    <meta name="twitter:image" content="https://www.gmimport.com.br/og-image.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="1000212889.png">
+
+    <!-- Preconnect & Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Scripts & Ícones -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Dados Estruturados -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Store",
+      "name": "GM Import",
+      "description": "Loja de perfumes importados originais masculinos e femininos com entrega grátis no DF.",
+      "url": "https://www.gmimport.com.br/",
+      "telephone": "+5561982740074",
+      "priceRange": "R$100 - R$900",
+      "address": {
+        "@type": "PostalAddress",
+        "addressRegion": "DF",
+        "addressCountry": "BR"
+      }
+    }
+    </script>
+
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .cart-sidebar { transition: transform 0.3s ease-in-out; }
+        .cart-open { transform: translateX(0); }
+        .cart-closed { transform: translateX(100%); }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 antialiased">
+
+    <!-- Topbar / Anúncio Superior -->
+    <div class="bg-black text-white text-xs py-2 text-center font-bold tracking-wide uppercase border-b border-neutral-800">
+        ✨ ENTREGA GRÁTIS NO DF | 5% DE DESCONTO NO PIX
+    </div>
+
+    <!-- Overlay Global -->
+    <div id="overlay" onclick="toggleCart(false)" class="fixed inset-0 bg-black/60 z-40 hidden transition-opacity"></div>
+
+    <!-- Sidebar do Carrinho -->
+    <aside id="cartSidebar" class="cart-sidebar cart-closed fixed top-0 right-0 w-full sm:w-[420px] h-full bg-white z-50 flex flex-col shadow-2xl" aria-label="Carrinho de compras">
+        <div class="bg-neutral-900 text-white p-5 flex justify-between items-center border-b border-neutral-800">
+            <div class="flex items-center gap-2">
+                <i class="fa-solid fa-bag-shopping text-amber-500 text-xl" aria-hidden="true"></i>
+                <h2 class="text-base font-extrabold tracking-wider uppercase">Seu Carrinho</h2>
+            </div>
+            <button onclick="toggleCart(false)" aria-label="Fechar carrinho" class="text-2xl text-gray-400 hover:text-white transition">&times;</button>
+        </div>
+
+        <div id="cartItems" class="flex-1 overflow-y-auto p-5 space-y-4"></div>
+
+        <div class="p-5 border-t bg-gray-50 space-y-4">
+            <div>
+                <p class="text-[10px] text-gray-500 font-bold uppercase mb-2">Formas de pagamento aceitas:</p>
+                <div class="flex gap-4 text-2xl text-gray-400">
+                    <i class="fa-brands fa-pix text-emerald-500" aria-label="Pix"></i>
+                    <i class="fa-solid fa-credit-card" aria-label="Cartão de crédito"></i>
+                    <i class="fa-brands fa-cc-visa" aria-label="Visa"></i>
+                    <i class="fa-brands fa-cc-mastercard" aria-label="Mastercard"></i>
+                </div>
+            </div>
+
+            <div class="flex justify-between items-center text-lg pt-2 border-t border-gray-200">
+                <span>TOTAL:</span>
+                <span id="cartTotal" class="text-amber-600">R$ 0,00</span>
+            </div>
+
+            <button onclick="openCheckoutModal()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-4 rounded-xl font-extrabold uppercase tracking-wider transition shadow-lg active:scale-[0.98] flex items-center justify-center gap-2 text-sm">
+                <i class="fa-brands fa-whatsapp text-lg" aria-hidden="true"></i> Finalizar no WhatsApp
+            </button>
+        </div>
+    </aside>
+
+    <!-- Cabeçalho / Navbar -->
+    <header class="sticky top-0 z-30 bg-white border-b border-gray-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between py-3 min-h-[100px]">
+                
+                <!-- Logo GM Import Ampliada -->
+                <div class="flex-shrink-0">
+                    <a href="#" aria-label="GM Import - Página inicial">
+                        <img src="1000212889.png" alt="GM Import - Logo da loja de perfumes importados" width="192" height="96" class="h-20 sm:h-24 w-auto object-contain">
+                    </a>
+                </div>
+
+                <!-- Busca Central -->
+                <div class="hidden md:flex flex-1 max-w-md mx-8">
+                    <div class="relative w-full">
+                        <input type="text" id="searchInput" aria-label="Buscar por produto ou marca" onkeyup="filterProducts()" placeholder="Busque por produto ou marca..." 
+                               class="w-full bg-gray-100 text-sm pl-4 pr-10 py-2.5 rounded-full focus:outline-none focus:ring-2 focus:ring-amber-500 border border-transparent">
+                        <button aria-label="Executar busca" class="absolute right-3 top-2.5 text-gray-400 hover:text-black">
+                            <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Ações Header -->
+                <div class="flex items-center space-x-4 sm:space-x-6 text-gray-700">
+                
+                    <!-- WhatsApp Atendimento -->
+                    <a href="https://wa.me/5561982740074" target="_blank" rel="noopener" class="hidden sm:flex items-center space-x-2 hover:text-emerald-600 transition">
+                        <i class="fa-brands fa-whatsapp text-2xl text-emerald-500" aria-hidden="true"></i>
+                        <span class="text-xs uppercase">Atendimento</span>
+                    </a>
+                    <!-- Carrinho -->
+                    <button onclick="toggleCart(true)" aria-label="Abrir carrinho" class="relative flex items-center p-2 rounded-full hover:bg-gray-100 transition">
+                        <i class="fa-solid fa-bag-shopping text-2xl text-gray-900" aria-hidden="true"></i>
+                        <span id="cartCount" class="absolute top-0 right-0 bg-amber-600 text-white text-[10px] w-5 h-5 rounded-full flex items-center justify-center border-2 border-white">0</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Navegação Secundária -->
+            <nav class="flex justify-center space-x-8 py-3 text-xs uppercase tracking-wider border-t border-gray-100" aria-label="Navegação por categorias">
+                <a href="#masculino" class="hover:text-amber-600 transition">Perfumes Masculinos</a>
+                <a href="#feminino" class="hover:text-amber-600 transition">Perfumes Femininos</a>
+                <a href="#destaques" class="text-amber-600 hover:text-amber-700 transition"
+            </nav>
+        </div>
+    </header>
+
+    
+
+                <!-- Botões de Navegação -->
+                <button onclick="prevSlide()" aria-label="Imagem anterior" class="absolute left-4 top-1/2 -translate-y-1/2 bg-black/80 hover:bg-black text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition z-10 border border-gray-800">
+                    <i class="fa-solid fa-chevron-left text-lg" aria-hidden="true"></i>
+                </button>
+                <button onclick="nextSlide()" aria-label="Próxima imagem" class="absolute right-4 top-1/2 -translate-y-1/2 bg-black/80 hover:bg-black text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition z-10 border border-gray-800">
+                    <i class="fa-solid fa-chevron-right text-lg" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Benefícios -->
+    <section class="bg-white border-b border-gray-200 py-8" aria-label="Diferenciais do serviço">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center" id="destaques">
+            <div class="p-4 space-y-2">
+                <i class="fa-solid fa-shield-halved text-3xl text-amber-600" aria-hidden="true"></i>
+                <h3 class="text-xs uppercase tracking-wide">100% Originais</h3>
+                <p class="text-xs text-gray-500">Garantia de procedência</p>
+            </div>
+            <div class="p-4 space-y-2">
+                <i class="fa-solid fa-truck-fast text-3xl text-amber-600" aria-hidden="true"></i>
+                <h3 class="text-xs uppercase tracking-wide">Entrega Grátis DF</h3>
+                <p class="text-xs text-gray-500">Entrega rápida na sua região</p>
+            </div>
+            <div class="p-4 space-y-2">
+                <i class="fa-brands fa-pix text-3xl text-emerald-500" aria-hidden="true"></i>
+                <h3 class="text-xs uppercase tracking-wide">5% OFF no PIX</h3>
+                <p class="text-xs text-gray-500">Desconto imediato</p>
+            </div>
+            <div class="p-4 space-y-2">
+                <i class="fa-solid fa-credit-card text-3xl text-amber-600" aria-hidden="true"></i>
+                <h3 class="text-xs uppercase tracking-wide">Cartões Aceitos</h3>
+                <p class="text-xs text-gray-500">Crédito(até 2x sem juros) e Débito</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vitrine de Produtos -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16">
+        <h1 class="sr-only">GM Import - Perfumes Importados Originais em Brasília</h1>
+
+        <!-- Seção Masculino -->
+        <section id="masculino" aria-label="Perfumes masculinos">
+            <div class="flex justify-between items-end mb-8 border-b border-gray-200 pb-4">
+                <div>
+                    <h2 class="text-xl sm:text-2xl uppercase tracking-wide text-neutral-900 border-l-4 border-amber-600 pl-3">Masculino</h2>
+                    <p class="text-xs text-gray-500 mt-1 pl-3">As melhores fragrâncias masculinas importadas</p>
+                </div>
+            </div>
+            <div id="grid-masculino" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4"></div>
+        </section>
+
+        <!-- Seção Feminino -->
+        <section id="feminino" aria-label="Perfumes femininos">
+            <div class="flex justify-between items-end mb-8 border-b border-gray-200 pb-4">
+                <div>
+                    <h2 class="text-xl sm:text-2xl uppercase tracking-wide text-neutral-900 border-l-4 border-pink-500 pl-3">Feminino</h2>
+                    <p class="text-xs text-gray-500 mt-1 pl-3">Fragrâncias marcantes e sofisticadas</p>
+                </div>
+            </div>
+            <div id="grid-feminino" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4"></div>
+        </section>
+    </main>
+
+    <!-- Botões Flutuantes (WhatsApp ) -->
+    <div class="fixed bottom-6 right-6 z-30 flex flex-col gap-3">
+       
+        <!-- WhatsApp Contato -->
+        <a id="whatsappFloat" href="#" target="_blank" rel="noopener" aria-label="Contato via WhatsApp" class="w-14 h-14 bg-emerald-500 text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 active:scale-95 transition duration-300">
+            <i class="fa-brands fa-whatsapp text-3xl" aria-hidden="true"></i>
+        </a>
+    </div>
+
+    <!-- Modal de Checkout -->
+    <div id="checkoutModal" class="fixed inset-0 bg-black/60 z-50 hidden flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="bg-white w-full max-w-md rounded-2xl p-6 space-y-5 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeCheckoutModal()" aria-label="Fechar janela" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-2xl">&times;</button>
+            
+            <h2 id="modalTitle" class="text-lg font-bold text-gray-900 uppercase tracking-wide border-b pb-2">Finalizar Pedido</h2>
+
+            <!-- Dados do Cliente -->
+            <div class="space-y-3">
+                <p class="text-xs font-bold text-gray-500 uppercase tracking-wider">Dados da Entrega</p>
+                <div>
+                    <label for="nomeInput" class="block text-xs text-gray-700 mb-1">Nome completo *</label>
+                    <input type="text" id="nomeInput" placeholder="Ex: Maria Silva" class="w-full text-sm p-2.5 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-500">
+                </div>
+                <div>
+                    <label for="enderecoInput" class="block text-xs text-gray-700 mb-1">Endereço <span class="text-gray-400 font-normal">(opcional)</span></label>
+                    <input type="text" id="enderecoInput" placeholder="Rua, número, bairro" class="w-full text-sm p-2.5 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-500">
+                </div>
+                <div>
+                    <label for="complementoInput" class="block text-xs text-gray-700 mb-1">Complemento <span class="text-gray-400 font-normal">(opcional)</span></label>
+                    <input type="text" id="complementoInput" placeholder="Apt, bloco, ponto de referência" class="w-full text-sm p-2.5 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-500">
+                </div>
+            </div>
+
+            <!-- Formas de Pagamento -->
+            <fieldset class="space-y-2 border-t pt-3">
+                <legend class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Forma de Pagamento</legend>
+                
+                <label class="flex items-center p-3 border border-gray-200 rounded-xl cursor-pointer hover:bg-gray-50 transition">
+                    <input type="radio" name="paymentMethod" value="pix" checked class="text-amber-600 focus:ring-amber-500">
+                    <span class="ml-3 text-gray-800 text-sm">Pix (5% OFF Adicional)</span>
+                </label>
+                <label class="flex items-center p-3 border border-gray-200 rounded-xl cursor-pointer hover:bg-gray-50 transition">
+                    <input type="radio" name="paymentMethod" value="credito" class="text-amber-600 focus:ring-amber-500">
+                    <span class="ml-3 text-gray-800 text-sm">Cartão de Crédito</span>
+                </label>
+                <label class="flex items-center p-3 border border-gray-200 rounded-xl cursor-pointer hover:bg-gray-50 transition">
+                    <input type="radio" name="paymentMethod" value="debito" class="text-amber-600 focus:ring-amber-500">
+                    <span class="ml-3 text-gray-800 text-sm">Cartão de Débito</span>
+                </label>
+            </fieldset>
+
+            <button onclick="processCheckout()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-4 rounded-xl uppercase tracking-wider transition shadow-md flex items-center justify-center gap-2 text-sm font-bold">
+                <i class="fa-brands fa-whatsapp text-xl" aria-hidden="true"></i> CONFIRMAR NO WHATSAPP
+            </button>
+        </div>
+    </div>
+
+    <!-- Rodapé -->
+    <footer class="bg-neutral-900 text-gray-400 text-xs py-12 border-t border-neutral-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="space-y-3">
+                <img src="1000212889.png" alt="GM Import Logo" width="128" height="48" class="h-12 w-auto object-contain">
+                <p class="leading-relaxed">Sua loja de confiança em perfumes importados 100% originais em Brasília e DF.</p>
+            </div>
+            <div class="space-y-2">
+                <h3 class="text-white uppercase tracking-wider text-sm">Navegação</h3>
+                <ul class="space-y-1">
+                    <li><a href="#masculino" class="hover:text-white transition">Perfumes Masculinos</a></li>
+                    <li><a href="#feminino" class="hover:text-white transition">Perfumes Femininos</a></li>
+                    <li><a href="#destaques" class="hover:text-white transition">Entrega Grátis no DF</a></li>
+                </ul>
+            </div>
+            <div class="space-y-2">
+                <h3 class="text-white uppercase tracking-wider text-sm">Atendimento & Suporte</h3>
+                <p>Brasília - DF e Região</p>
+                <p class="text-white">(61) 98274-0074</p>
+                <p><a href="https://t.me/Gmimport26_bot" target="_blank" rel="noopener" class="text-sky-400 hover:underline flex items-center gap-1 mt-1"><i class="fa-brands fa-telegram"></i> Tirar Dúvidas (Telegram Bot)</a></p>
+                <p class="text-emerald-500 mt-1">Entrega em todo o Distrito Federal</p>
+            </div>
+            <div class="space-y-3">
+                <h3 class="text-white uppercase tracking-wider text-sm">Formas de Pagamento</h3>
+                <div class="flex gap-4 text-2xl text-gray-500">
+                    <i class="fa-brands fa-cc-visa hover:text-white" aria-label="Visa"></i>
+                    <i class="fa-brands fa-cc-mastercard hover:text-white" aria-label="Mastercard"></i>
+                    <i class="fa-brands fa-pix hover:text-emerald-500" aria-label="Pix"></i>
+                    <i class="fa-solid fa-credit-card hover:text-white" aria-label="Cartão de crédito"></i>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-6 border-t border-neutral-800 text-center">
+            <p>&copy; 2026 GM Import. Todos os direitos reservados. Perfumes Importados Originais.</p>
+        </div>
+    </footer>
+
+    <!-- Lógica JavaScript -->
+    <script>
+        const CONFIG = {
+            whatsapp: "5561982740074",
+            telegramBot: "Gmimport26_bot",
+            pixDiscount: 0.05,
+            storageKey: "gmCartFinal"
+        };
+
+        const produtos = [
+            // --- MASCULINO ---
+            { id: 1, nome: "Pisa", marca: "lattafa", detalhes: "Eau 100ml", preco: 400.00, cat: "masculino", img: "imagem52.jpg" },
+            { id: 2, nome: "Safeer Niche Emarati", marca: "Lattafa", detalhes: "Eau 100ml", preco: 400.00, cat: "masculino", img: "imagem51.jpg" },
+            { id: 3, nome: "The move", marca: "Mercedes", detalhes: "Edt 100ml", preco: 300.00, cat: "masculino", img: "imagem54.jpg" },
+            { id: 4, nome: "Impact", marca: "Tommy Hilfiger", detalhes: "Edt 100ml", preco: 350.00, cat: "masculino", img: "imagem55.jpg" },
+            
+            // --- FEMININO ---
+            { id: 5, nome: "Yara mini collection", marca: "Lattafa", detalhes: "Eau 5ml", preco: 200.00, cat: "feminino", img: "imagem53.png" },
+            { id: 6, nome: "Opulent Dubai", marca: "Lattafa", detalhes: "Eau 100ml", preco: 200.00, cat: "feminino", img: "imagem50.jpg" },
+           
+        ];
+
+        let carrinho = JSON.parse(localStorage.getItem(CONFIG.storageKey)) || [];
+        let currentSlide = 0;
+        const totalSlides = 6;
+
+        const formatMoney = (val) => new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(val);
+
+        function saveCart() {
+            localStorage.setItem(CONFIG.storageKey, JSON.stringify(carrinho));
+        }
+
+        // Carrossel
+        function updateSlidePosition() {
+            const container = document.getElementById('heroCarousel');
+            if (container) {
+                container.style.transform = `translateX(-${currentSlide * 100}%)`;
+            }
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateSlidePosition();
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateSlidePosition();
+        }
+
+        function startAutoSlide() {
+            setInterval(() => {
+                nextSlide();
+            }, 5000);
+        }
+
+        // Renderização de Produtos Reduzidos
+        function renderProdutos(lista = produtos) {
+            ['masculino', 'feminino'].forEach(cat => {
+                const container = document.getElementById(`grid-${cat}`);
+                if (!container) return;
+                
+                const produtosFiltrados = lista.filter(p => p.cat === cat);
+                
+                if (produtosFiltrados.length === 0) {
+                    container.innerHTML = `<p class="col-span-full text-center text-gray-400 py-6 text-xs">Nenhum produto encontrado nesta categoria.</p>`;
+                    return;
+                }
+
+                container.innerHTML = produtosFiltrados.map(p => {
+                    const precoPix = p.preco * (1 - CONFIG.pixDiscount);
+                    return `
+                        <div class="bg-white rounded-lg border border-gray-200 p-2.5 flex flex-col justify-between hover:shadow-md transition duration-300 group">
+                            <div class="relative mb-2 bg-gray-50 rounded h-40 flex items-center justify-center overflow-hidden">
+                                <span class="absolute top-1.5 left-1.5 bg-black text-white text-[9px] px-1.5 py-0.5 rounded tracking-wider uppercase">100% Original</span>
+                                <img src="${p.img}" loading="lazy" width="200" height="160" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt="${p.nome} ${p.marca} - Perfume importado original GM Import">
+                            </div>
+                            <div class="space-y-1.5 flex-grow flex flex-col justify-between">
+                                <div>
+                                    <h3 class="text-xs text-gray-800 leading-tight font-normal">
+                                        ${p.nome}
+                                    </h3>
+                                    <p class="text-[11px] text-amber-600 uppercase tracking-wider mt-0.5 font-normal">
+                                        ${p.marca} <span class="text-gray-400 font-normal lowercase">- ${p.detalhes}</span>
+                                    </p>
+                                </div>
+                                <div class="pt-1">
+                                    <p class="text-sm text-amber-600 font-normal">${formatMoney(p.preco)}</p>
+                                    <p class="text-[10px] text-emerald-600 mt-0.5 font-normal">
+                                        ou <span class="font-normal">${formatMoney(precoPix)}</span> no PIX
+                                    </p>
+                                    <button onclick="addToCart(${p.id})" aria-label="Comprar ${p.nome} ${p.marca}" class="w-full mt-2 bg-neutral-900 hover:bg-amber-600 text-white font-normal py-2 rounded text-[11px] uppercase tracking-wider transition flex items-center justify-center gap-1.5">
+                                        <i class="fa-solid fa-cart-plus" aria-hidden="true"></i> Comprar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            });
+        }
+
+        // Filtro de Busca
+        function filterProducts() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const filtrados = produtos.filter(p => 
+                p.nome.toLowerCase().includes(query) || 
+                p.marca.toLowerCase().includes(query) ||
+                (p.detalhes && p.detalhes.toLowerCase().includes(query))
+            );
+            renderProdutos(filtrados);
+        }
+
+        // Carrinho
+        function toggleCart(open) {
+            const sidebar = document.getElementById('cartSidebar');
+            const overlay = document.getElementById('overlay');
+            if (open) {
+                sidebar.classList.remove('cart-closed');
+                sidebar.classList.add('cart-open');
+                overlay.classList.remove('hidden');
+            } else {
+                sidebar.classList.remove('cart-open');
+                sidebar.classList.add('cart-closed');
+                overlay.classList.add('hidden');
+            }
+        }
+
+        function addToCart(id) {
+            const produto = produtos.find(p => p.id === id);
+            const itemExistente = carrinho.find(item => item.id === id);
+            
+            if (itemExistente) {
+                itemExistente.qtd += 1;
+            } else {
+                carrinho.push({ ...produto, qtd: 1 });
+            }
+            
+            updateCart();
+            saveCart();
+            toggleCart(true);
+        }
+
+        function updateCart() {
+            const container = document.getElementById('cartItems');
+            const totalQtd = carrinho.reduce((acc, item) => acc + item.qtd, 0);
+            document.getElementById('cartCount').innerText = totalQtd;
+            
+            if (carrinho.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center text-gray-400 py-12 space-y-3">
+                        <i class="fa-solid fa-bag-shopping text-5xl text-gray-300" aria-hidden="true"></i>
+                        <p class="text-sm font-normal">Seu carrinho está vazio</p>
+                    </div>`;
+                document.getElementById('cartTotal').innerText = formatMoney(0);
+                return;
+            }
+            
+            container.innerHTML = carrinho.map((item, index) => `
+                <div class="flex items-center gap-4 border-b border-gray-100 pb-4">
+                    <img src="${item.img}" width="64" height="64" class="w-16 h-16 object-cover rounded-lg border border-gray-200" alt="${item.nome}">
+                    <div class="flex-1 text-xs">
+                        <h4 class="text-gray-800 line-clamp-1 font-normal">${item.nome} - ${item.marca}</h4>
+                        <p class="text-amber-600 mt-1 text-sm font-normal">${formatMoney(item.preco)}</p>
+                        <div class="flex items-center gap-3 mt-2">
+                            <div class="flex items-center border border-gray-200 rounded-lg overflow-hidden">
+                                <button onclick="alterarQtd(${index}, -1)" aria-label="Diminuir quantidade" class="bg-gray-100 px-2 py-1 hover:bg-gray-200 text-gray-700">-</button>
+                                <span class="px-3 text-gray-800">${item.qtd}</span>
+                                <button onclick="alterarQtd(${index}, 1)" aria-label="Aumentar quantidade" class="bg-gray-100 px-2 py-1 hover:bg-gray-200 text-gray-700">+</button>
+                            </div>
+                            <button onclick="removerItem(${index})" class="text-red-500 hover:text-red-700 ml-auto text-sm" aria-label="Remover item" title="Remover item">
+                                <i class="fa-solid fa-trash-can" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+            
+            const total = carrinho.reduce((acc, item) => acc + (item.preco * item.qtd), 0);
+            document.getElementById('cartTotal').innerText = formatMoney(total);
+        }
+
+        function alterarQtd(index, delta) {
+            if (carrinho[index]) {
+                carrinho[index].qtd += delta;
+                if (carrinho[index].qtd <= 0) carrinho.splice(index, 1);
+                updateCart();
+                saveCart();
+            }
+        }
+
+        function removerItem(index) {
+            carrinho.splice(index, 1);
+            updateCart();
+            saveCart();
+        }
+
+        // Modal Checkout & Envio WhatsApp
+        function openCheckoutModal() {
+            if (carrinho.length === 0) return alert("Seu carrinho está vazio!");
+            document.getElementById('checkoutModal').classList.remove('hidden');
+        }
+
+        function closeCheckoutModal() {
+            document.getElementById('checkoutModal').classList.add('hidden');
+        }
+
+        function processCheckout() {
+            const nomeCliente = document.getElementById('nomeInput')?.value.trim();
+            const enderecoCliente = document.getElementById('enderecoInput')?.value.trim();
+            const complementoCliente = document.getElementById('complementoInput')?.value.trim();
+
+            if (!nomeCliente) {
+                alert("Por favor, preencha o seu Nome antes de finalizar!");
+                return;
+            }
+
+            const selectedOption = document.querySelector('input[name="paymentMethod"]:checked').value;
+            const totalOriginal = carrinho.reduce((acc, item) => acc + (item.preco * item.qtd), 0);
+            
+            let pagamentoTexto = "";
+            let totalFinal = totalOriginal;
+
+            if (selectedOption === 'pix') {
+                pagamentoTexto = "PIX (5% OFF aplicado)";
+                totalFinal = totalOriginal * (1 - CONFIG.pixDiscount);
+            } else if (selectedOption === 'credito') {
+                pagamentoTexto = "CARTÃO DE CRÉDITO";
+            } else {
+                pagamentoTexto = "CARTÃO DE DÉBITO";
+            }
+
+            let msg = `🛍️ *NOVO PEDIDO GM IMPORT* 🛍️\n\n`;
+            msg += `📦 *ITENS DO PEDIDO:*\n━━━━━━━━━━━━━━━━━\n`;
+
+            carrinho.forEach(item => {
+                msg += `• *${item.nome} (${item.marca})* (${item.qtd}x) - ${formatMoney(item.preco * item.qtd)}\n`;
+            });
+
+            msg += `━━━━━━━━━━━━━━━━━\n`;
+
+            if (selectedOption === 'pix') {
+                const desconto = totalOriginal * CONFIG.pixDiscount;
+                msg += `💰 *TOTAL ORIGINAL: ${formatMoney(totalOriginal)}*\n`;
+                msg += `🎉 *DESCONTO 5% PIX: - ${formatMoney(desconto)}*\n`;
+                msg += `💚 *TOTAL COM PIX: ${formatMoney(totalFinal)}*\n`;
+            } else {
+                msg += `💰 *TOTAL: ${formatMoney(totalFinal)}*\n`;
+            }
+
+            msg += `💳 *PAGAMENTO:* ${pagamentoTexto}\n\n`;
+            msg += `👤 *DADOS DO CLIENTE:*\n`;
+            msg += `Nome: ${nomeCliente}\n`;
+            msg += `Endereço: ${enderecoCliente || 'Não informado'}\n`;
+
+            // Adiciona o complemento apenas se ele tiver sido preenchido
+            if (complementoCliente) {
+                msg += `Complemento: ${complementoCliente}\n`;
+            }
+
+            msg += `\n✅ *Aguardando confirmação de pagamento!*\n`;
+            msg += `🔗 *GM Import - Agradecemos a preferência!*`;
+
+            window.open(`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(msg)}`, '_blank');
+            closeCheckoutModal();
+        }
+
+        // Inicialização
+        document.getElementById('whatsappFloat').href = `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent('Olá! Gostaria de fazer um pedido na GM Import!')}`;
+        
+        startAutoSlide();
+        renderProdutos();
+        updateCart();
+    </script>
+</body>
+</html>
